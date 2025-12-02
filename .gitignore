@@ -1,7 +1,6 @@
 # Файлы окружения
 .env
 .env.local
-.env.production
 
 # Питон
 __pycache__/
@@ -22,6 +21,3 @@ env/
 # Системные
 .DS_Store
 Thumbs.db
-
-# Логи
-*.log
