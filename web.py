@@ -4,25 +4,24 @@ from contextlib import asynccontextmanager
 import asyncio
 from config import BOT_TOKEN, APP_URL
 import bot
+from utils import file_manager  # добавить этот импорт
 
 bot_instance = Bot(token=BOT_TOKEN)
 dp = bot.dp
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Установка вебхука при запуске
-    if APP_URL:
-        webhook_url = f"{APP_URL}/webhook"
-        await bot_instance.set_webhook(webhook_url)
-        print(f"✅ Webhook установлен: {webhook_url}")
-    else:
-        print("⚠ APP_URL не установлен, работаю в режиме поллинга")
+    # Установка вебхука
+    webhook_url = f"{APP_URL}/webhook"
+    await bot_instance.set_webhook(webhook_url)
+    print(f"✅ Webhook установлен: {webhook_url}")
+    
     yield
     
     # Очистка при остановке
-    if APP_URL:
-        await bot_instance.delete_webhook()
-        print("🛑 Webhook удален")
+    file_manager.clear_all()  # если добавите метод clear_all в FileManager
+    await bot_instance.delete_webhook()
+    print("🛑 Webhook удален")
 
 app = FastAPI(lifespan=lifespan)
 
