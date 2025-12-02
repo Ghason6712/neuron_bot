@@ -30,6 +30,10 @@ class FileManager:
                 except:
                     pass
             del self.user_files[user_id]
+    def clear_all(self):
+        """Удаляет все файлы всех пользователей."""
+        for user_id in list(self.user_files.keys()):
+            self.clear_user_files(user_id)
 
 file_manager = FileManager()
 

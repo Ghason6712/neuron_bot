@@ -19,7 +19,8 @@ async def lifespan(app: FastAPI):
     yield
     
     # Очистка при остановке
-    file_manager.clear_all()  # если добавите метод clear_all в FileManager
+    from utils import file_manager
+    file_manager.clear_all()  # Очищаем все файлы
     await bot_instance.delete_webhook()
     print("🛑 Webhook удален")
 
