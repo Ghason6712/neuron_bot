@@ -1,0 +1,27 @@
+# Файлы окружения
+.env
+.env.local
+.env.production
+
+# Питон
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Системные
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
