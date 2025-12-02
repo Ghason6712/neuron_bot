@@ -1,7 +1,7 @@
 # Файлы окружения
 .env
 .env.local
-
+*.env
 # Питон
 __pycache__/
 *.py[cod]
